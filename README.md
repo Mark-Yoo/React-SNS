@@ -19,3 +19,6 @@ You may need an appropriate loader to handle this file type.
 | 
 > import('./noop'); // Support EventSource on Internet Explorer 11
 ```
+
+Next 9버전에서 제대로 동작하지 않는 코드를 발견 8버전으로 다운그레이드 후 사용중
+향후 다시 9버전 코드로 수정할 예정
