@@ -1,65 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Head from 'next/head';
 import { Form, Input, Checkbox, Button } from 'antd';
 import AppLayout from '../components/AppLayout';
 
 const Signup = () => {
-  const [id, setId] = useState('');
-  const [nick, setNick] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
-  const [term, setTerm] = useState(false);
+  // custom hook
+  const useInput = (initValue = null) => {
+    const [value, setter] = useState(initValue);
+    const handler = useCallback((e) => {
+      setter(e.target.value);
+    }, []);
+    return [value, handler];
+  }
+  
+  const [id, onChangeId] = useInput('');
+  const [nick, onChangeNick] = useInput('');
+  const [password, onChangePw] = useInput('');
+  const [passwordCheck, onChangePwck] = useInput('');
+  const [term, onChangeTerm] = useInput('false');
   const [idError, setIdError] = useState(false);
   const [pwError, setPwError] = useState(false);
   const [pwckError, setPwckError] = useState(false);
   const [termError, setTermError] = useState(false);
   const idRegExp = new RegExp(/^[a-zA-Z0-9+]{5,13}$/g);
   const pwRegExp = new RegExp(/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/);
-
+  
   // 아이디
-  const onChangeId = (e) => {
-    setId(e.target.value);
-  };
-
-  const onCheckId = () => {
+  const onCheckId = useCallback(() => {
     idRegExp.test(id) ? setIdError(false) : setIdError(true);
-  }
-
-  // 닉네임
-  const onChangeNick = (e) => {
-    setNick(e.target.value);
-  };
+  }, []);
 
   // 패스워드
-  const onChangePw = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onCheckPw = () => {
+  const onCheckPw = useCallback(() => {
     pwRegExp.test(password) ? setPwError(false) : setPwError(true);
-  }
+  }, []);
 
   // 패스워드 체크
-  const onChangePwck = (e) => {
-    setPasswordCheck(e.target.value);
-  };
-
-  const onCheckpwck = () => {
+  const onCheckpwck = useCallback(() => {
     passwordCheck === password ? setPwckError(false) : setPwckError(true);
-  }
-
-  // 약관 체크
-  const onChangeTerm = (e) => {
-    setTerm(e.target.checked);
-  };
+  }, []);
 
   // 폼 제출
-  const onSubmit = (e) => {
+  const onSubmit = useCallback((e) => {
     e.preventDefault();
     term ? setTermError(false) : setTermError(true);
     if (!idError && !pwError && !pwckError && !termError) return;
     console.log('success');
-  };
+  }, [password, passwordCheck, term]);
 
   return(
     <>
