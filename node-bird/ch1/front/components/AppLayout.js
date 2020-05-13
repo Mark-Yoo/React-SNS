@@ -25,11 +25,16 @@ const AppLayout = ({ children }) => {
             <a>프로필</a>
           </Link>
         </Menu.Item>
+        <Menu.Item key="about">
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </Menu.Item>
         <Menu.Item key="mail">
           <Input.Search enterButton style={{ verticalAlign: "middle" }} />
         </Menu.Item>
       </Menu>
-      <Row>
+      <Row gutter={1}>
         <Col xs={24} md={6}>
           {dummy.isLoggedIn ? (
             <Card

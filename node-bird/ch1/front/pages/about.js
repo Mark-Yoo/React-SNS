@@ -1,11 +1,8 @@
 import React from "react";
+import { List, Card, Button, Icon } from "antd";
 
 const About = () => {
-  return (
-    <>
-      <div>about page</div>
-    </>
-  );
+  return <div>About page</div>;
 };
 
 export default About;

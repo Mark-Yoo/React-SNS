@@ -19,7 +19,7 @@ function SigninForm() {
 
   return (
     <>
-      <Form onSubmit={onSubmitForm}>
+      <Form onSubmit={onSubmitForm} style={{ padding: "10px" }}>
         <div>
           <label htmlFor="user-id">아이디</label>
           <br />
@@ -42,13 +42,13 @@ function SigninForm() {
             type="password"
           ></Input>
         </div>
-        <div>
+        <div style={{ paddingTop: "20px" }}>
           <Button type="primary" htmlFor="submit" loading={false}>
             로그인
           </Button>
           <Link href="/signup">
             <a>
-              <Button>회원가입</Button>
+              <Button style={{ float: "right" }}>회원가입</Button>
             </a>
           </Link>
         </div>
