@@ -26,7 +26,7 @@ const Profile = () => {
         dataSource={data}
         renderItem={(item) => (
           <List.Item style={{ marginTop: "20px" }}>
-            <Card actions={[<Icon type="stop" />]}>
+            <Card actions={[<Icon key="stop" type="stop" />]}>
               <Card.Meta description={item} />
             </Card>
           </List.Item>
@@ -42,7 +42,7 @@ const Profile = () => {
         dataSource={data}
         renderItem={(item) => (
           <List.Item style={{ marginTop: "20px" }}>
-            <Card actions={[<Icon type="stop" />]}>
+            <Card actions={[<Icon key="stop" type="stop" />]}>
               <Card.Meta description={item} />
             </Card>
           </List.Item>

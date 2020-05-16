@@ -3,7 +3,7 @@ import { Button, Form, Input } from "antd";
 import Link from "next/link";
 import { useInput } from "../pages/signup";
 
-function SigninForm() {
+const SigninForm = () => {
   const [id, onChangeId] = useInput("");
   const [password, onChangePassword] = useInput("");
   const onSubmitForm = useCallback(
@@ -55,6 +55,6 @@ function SigninForm() {
       </Form>
     </>
   );
-}
+};
 
 export default SigninForm;
