@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 
-function PostForm({ dummy }) {
+function PostForm({ info }) {
   return (
     <Form encType="multipart/form-data">
       <Input.TextArea
@@ -16,7 +16,7 @@ function PostForm({ dummy }) {
         </Button>
       </div>
       <div>
-        {dummy.imagePaths.map((v, i) => {
+        {info.imagePaths.map((v, i) => {
           return (
             <div key={v} style={{ display: "inline-block" }}>
               <img
