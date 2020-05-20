@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Menu, Input, Row, Col, Card, Avatar } from "antd";
+import { Menu, Input, Row, Col } from "antd";
+import UserProfile from "./UserProfile";
 import SigninForm from "./SigninForm";
 
 const dummy = {
@@ -36,34 +37,7 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={1}>
         <Col xs={24} md={6}>
-          {dummy.isLoggedIn ? (
-            <Card
-              actions={[
-                <div key="twit">
-                  트윗
-                  <br />
-                  {dummy.Post.length}
-                </div>,
-                <div key="following">
-                  팔로잉
-                  <br />
-                  {dummy.Post.length}
-                </div>,
-                <div key="follower">
-                  팔로워
-                  <br />
-                  {dummy.Post.length}
-                </div>,
-              ]}
-            >
-              <Card.Meta
-                avatar={<Avatar>{dummy.nickname[0]}</Avatar>}
-                title={dummy.nickname}
-              ></Card.Meta>
-            </Card>
-          ) : (
-            <SigninForm />
-          )}
+          {dummy.isLoggedIn ? <UserProfile userInfo={dummy} /> : <SigninForm />}
         </Col>
         <Col xs={12} md={12}>
           {children}

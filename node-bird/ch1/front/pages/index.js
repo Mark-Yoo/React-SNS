@@ -1,5 +1,4 @@
 import React from "react";
-import { Form, Input, Button, Card, Icon, Avatar } from "antd";
 import PostForm from "../components/PostForm";
 import PostCard from "../components/PostCard";
 
@@ -20,9 +19,9 @@ const Home = () => {
   return (
     <div>
       {dummy.isLoggedIn && <PostForm info={dummy} />}
-      {dummy.mainPost.map((c) => {
-        return <PostCard info={c} />;
-      })}
+      {dummy.mainPost.map((c) => (
+        <PostCard info={c} />
+      ))}
     </div>
   );
 };

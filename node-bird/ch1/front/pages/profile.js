@@ -1,21 +1,13 @@
 import React from "react";
-import { Form, Button, Input, List, Card, Icon } from "antd";
+import { Button, List, Card, Icon } from "antd";
+import NicknameEditForm from "../components/NicknameEditForm";
 
 const data = ["hi", "what", "hey"];
 
 const Profile = () => {
   return (
     <>
-      <Form
-        style={{
-          marginBottom: "20px",
-          border: "1px solid #d9d9d9",
-          padding: "20px",
-        }}
-      >
-        <Input addonBefore="닉네임" />
-        <Button type="primary">수정</Button>
-      </Form>
+      <NicknameEditForm />
       <List
         style={{ marginBottom: "20px" }}
         grid={{ gutter: 4, xs: 2, md: 3 }}

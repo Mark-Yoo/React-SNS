@@ -8,6 +8,7 @@ import AppLayout from "../components/AppLayout";
 // _app.js는 기본적인 레이아웃으로 인식한다.
 // prop-types를 이용해 props를 검증해주는 기능을 react가 지원한다.
 const NodeBird = ({ Component }) => {
+  console.log(Component);
   return (
     <>
       <Head>
