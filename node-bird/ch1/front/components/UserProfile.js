@@ -8,17 +8,17 @@ const UserProfile = ({ userInfo }) => {
         <div key="twit">
           트윗
           <br />
-          {userInfo.Post.length}
+          {userInfo.post.length}
         </div>,
         <div key="following">
           팔로잉
           <br />
-          {userInfo.Post.length}
+          {userInfo.post.length}
         </div>,
         <div key="follower">
           팔로워
           <br />
-          {userInfo.Post.length}
+          {userInfo.post.length}
         </div>,
       ]}
     >

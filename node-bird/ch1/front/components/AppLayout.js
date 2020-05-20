@@ -6,7 +6,7 @@ import SigninForm from "./SigninForm";
 
 const dummy = {
   nickname: "Mark",
-  Post: [],
+  post: [],
   following: [],
   follower: [],
   isLoggedIn: false,

@@ -11,12 +11,14 @@
   "author": "MarkYoo",
   "license": "MIT",
   "dependencies": {
-    "antd": "^3.23.1",
+    "antd": "^3.17.0",
     "next": "^8.1.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "next-redux-wrapper": "^3.0.0-alpha.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0-rc.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
