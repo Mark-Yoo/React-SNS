@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Form, Input, Checkbox, Button } from "antd";
+import { useDispatch } from "react-redux";
+import { signupAction } from "../reducers/user";
 
 // custom hook
 export const useInput = (initValue = null) => {
@@ -13,42 +15,42 @@ export const useInput = (initValue = null) => {
 const Signup = () => {
   const [id, onChangeId] = useInput("");
   const [nick, onChangeNick] = useInput("");
+  const dispatch = useDispatch();
   const [password, onChangePw] = useInput("");
   const [passwordCheck, onChangePwck] = useInput("");
-  const [term, onChangeTerm] = useInput("false");
+  const [term, setTerm] = useState("false");
   const [idError, setIdError] = useState(false);
   const [pwError, setPwError] = useState(false);
   const [pwckError, setPwckError] = useState(false);
-  const [termError, setTermError] = useState(false);
   const idRegExp = new RegExp(/^[a-zA-Z0-9+]{5,13}$/g);
   const pwRegExp = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
   );
 
   // 아이디
-  const onCheckId = useCallback(() => {
+  const onCheckId = () => {
     idRegExp.test(id) ? setIdError(false) : setIdError(true);
-  }, []);
+  };
 
   // 패스워드
-  const onCheckPw = useCallback(() => {
+  const onCheckPw = () => {
     pwRegExp.test(password) ? setPwError(false) : setPwError(true);
-  }, []);
+  };
 
   // 패스워드 체크
-  const onCheckpwck = useCallback(() => {
+  const onCheckpwck = () => {
     passwordCheck === password ? setPwckError(false) : setPwckError(true);
-  }, []);
+  };
 
   // 폼 제출
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      term ? setTermError(false) : setTermError(true);
-      if (!idError && !pwError && !pwckError && !termError) return;
+      if (!idError && !pwError && !pwckError && !term) return;
       console.log("success");
+      dispatch(signupAction({ id, password, nick }));
     },
-    [password, passwordCheck, term]
+    [id, password, passwordCheck, term]
   );
 
   return (
@@ -113,12 +115,13 @@ const Signup = () => {
           )}
         </div>
         <div>
-          <Checkbox name="user-term" onChange={onChangeTerm}>
+          <Checkbox
+            name="user-term"
+            onChange={(e) => setTerm(e.target.checked)}
+          >
             약관에 동의합니다.
           </Checkbox>
-          {termError && (
-            <div style={{ color: "red" }}>약관에 동의하여주세요</div>
-          )}
+          {!term && <div style={{ color: "red" }}>약관에 동의하여주세요</div>}
         </div>
         <div>
           <Button type="primary" htmlType="submit">
