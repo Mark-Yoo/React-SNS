@@ -16,7 +16,7 @@ function PostForm({ info }) {
         </Button>
       </div>
       <div>
-        {info.imagePaths.map((v, i) => {
+        {info.map((v, i) => {
           return (
             <div key={v} style={{ display: "inline-block" }}>
               <img
