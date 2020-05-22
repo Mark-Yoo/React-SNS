@@ -53,3 +53,16 @@ function* helloSaga() {
 * 위와 같은 코드를 사용하면 중단점을 기준으로 무한히 yield 다음의 코드를 실행할 수 있다. 이는 while문조차도 yield의 중단점에서 멈추기 때문.
 
 - redux-saga에서 동작하지 않는다고해도 reducer는 그대로 동작한다. 이 둘은 서로 독립적으로 존재하기 때문이다.
+
+```
+// while(true)를 사용하지 않고 takeEvery 제너레이트 함수를 이용해서 특정 동작을 실행할 수 있다.
+
+function* Hello() {
+  yield takeEvery(SAY_HELLO, function*() {
+    console.log(1);
+  })
+}
+
+// takeLatest는 while(true)와 조금 다르다. 겉으로 보기에는 동작이 같아보이나 예를 들어 비동기 (delay와 같은) 동작이 추가된다면 제일 마지막으로 dispatch된 action만 받겠다는 의미가 되므로 무의미한 동일한 요청을 막고 제일 마지막으로 받은 action만을 실행하게 된다.
+```
+
