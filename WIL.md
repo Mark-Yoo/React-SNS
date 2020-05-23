@@ -64,5 +64,11 @@ function* Hello() {
 }
 
 // takeLatest는 while(true)와 조금 다르다. 겉으로 보기에는 동작이 같아보이나 예를 들어 비동기 (delay와 같은) 동작이 추가된다면 제일 마지막으로 dispatch된 action만 받겠다는 의미가 되므로 무의미한 동일한 요청을 막고 제일 마지막으로 받은 action만을 실행하게 된다.
+예) 로그인 버튼을 여러번 누르는 경우
 ```
 
+- call은 동기 호출, fork는 비동기 호출
+
+### Redux-saga pattern
+- 보통 서버에 요청을 보내고 결과를 받아야 하는 경우에는 saga를 사용한다.
+- 만약 여러번의 action이 dispatch 되었을 때에 불필요하게 서버에 요청을 여러번 하게 되는 상황이라면 redux-saga에서 미리 한 번만 받을 수 있게 막는 것이 좋다.
