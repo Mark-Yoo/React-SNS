@@ -72,3 +72,6 @@ function* Hello() {
 ### Redux-saga pattern
 - 보통 서버에 요청을 보내고 결과를 받아야 하는 경우에는 saga를 사용한다.
 - 만약 여러번의 action이 dispatch 되었을 때에 불필요하게 서버에 요청을 여러번 하게 되는 상황이라면 redux-saga에서 미리 한 번만 받을 수 있게 막는 것이 좋다.
+
+### 클린코드(clean code)
+- 클린 코드는 null을 반환하지 않는것이 좋다
